@@ -1,7 +1,11 @@
 from django.urls import path
-from measurement.views import api
+
+from measurement.models import Sensor
+from measurement.serializers import SensorDetailSerializer
+from measurement.views import SensorList
 
 urlpatterns = [
     # TODO: зарегистрируйте необходимые маршруты
-    path('', api),
+    path('sensor_list/', SensorList.as_view(queryset=Sensor.objects.all(), serializer_class=SensorDetailSerializer),
+         name='sensor-list')
 ]
