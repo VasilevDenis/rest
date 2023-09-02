@@ -8,7 +8,12 @@ from measurement.serializers import MeasurementSerializer, SensorSerializer, Sen
 from measurement.models import Sensor, Measurement
 
 
-class SensorList(generics.ListCreateAPIView):
+class Sensors(generics.ListCreateAPIView):
     queryset = Sensor.objects.all()
-    serializer_class = SensorDetailSerializer
+    serializer_class = SensorSerializer
+
+
+class Measurements(generics.ListCreateAPIView):
+    queryset = Measurement.objects.all()
+    serializer_class = MeasurementSerializer
 
